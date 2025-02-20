@@ -26,6 +26,8 @@ class Camera:
             #Metto il testo sul frame, alcuni parametri:
             # - org, posizione dell'angolo in basso a sinistra della stringa sulla foto
             cv2.putText(frame, "Ciao salamone", (100, 100), self.font, 2, (255, 0, 0), 3)
+            #Analizzo l'immagine
+            self.analyze(frame)
             #Mostro l'immagine: Nome_finestra, Immagine
             cv2.imshow("Frame", frame)
             #Controllo che non si voglia chiudere la finestra, 0xFF è una maschera
@@ -33,3 +35,7 @@ class Camera:
             if cv2.waitKey(1) & 0xFF == ord("q"):
                 break
 
+    def analyze(self, image):
+        #Metto l'immagine in scala di grigi così da diminuire i disturbi
+        gr_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+        return gr_image
