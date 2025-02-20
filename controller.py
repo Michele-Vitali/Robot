@@ -1,5 +1,7 @@
+import math
 from bluedot import BlueDot
 from gpiozero import Robot as rb
+from time import sleep
 
 class Controller:
 
@@ -9,6 +11,7 @@ class Controller:
         #Chiamata a funzione quando viene cliccato il bottone
         self.bd.when_pressed = self.move
         #Parametri default per il movimento
+        self.duration = 2.0
         self.speed = 1.0
         #Soglia per decidere la direzione
         self.dead_zone = 0.2
@@ -17,22 +20,27 @@ class Controller:
 
 
     def move(self, pos):
-        if pos.y > self.dead_zone:
-            self.bot.forward(self.speed)
-        elif pos.y < -self.dead_zone:
-            self.bot.backward(self.speed)
-        else:
+        distanza = math.sqrt(pos.x**2, pos.y**2)
+        if distanza < self.dead_zone:
             self.bot.stop()
-
-        if pos.x > self.dead_zone:
-            self.bot.right(self.speed)
-        elif pos.x < -self.dead_zone:
-            self.bot.left(self.speed)
         else:
-            self.bot.stop()
-
+            if abs(pos.x) > abs(pos.y):
+                if pos.x > 0:
+                    self.bot.right(self.speed)
+                    print("Destra")
+                else:
+                    self.bot.left(self.speed)
+                    print("Sinistra")
+            else:
+                if pos.y > 0:
+                    self.bot.forward(self.speed)
+                    print("Avanti")
+                else:
+                    self.bot.backward(self.speed)
+                    print("Indietro")
         print(pos.x)
         print(pos.y)
+        sleep(self.duration)
 
     '''def stop():
         pass'''
