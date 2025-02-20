@@ -21,7 +21,7 @@ class Camera:
     def capture(self):
         #Catturo immagini di continuo dalla camera
            while True: 
-            #Acquisisco il frame come un array numpy
+            #Acquisisco il frame come un array Numpy
             frame = self.camera.capture_array()
             #Metto il testo sul frame, alcuni parametri:
             # - org, posizione dell'angolo in basso a sinistra della stringa sulla foto
