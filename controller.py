@@ -20,7 +20,7 @@ class Controller:
 
 
     def move(self, pos):
-        distanza = math.sqrt(pos.x**2, pos.y**2)
+        distanza = math.sqrt(pos.x**2 + pos.y**2)
         if distanza < self.dead_zone:
             self.bot.stop()
         else:
