@@ -4,7 +4,7 @@ class Controller:
 
     def __init__(self):
         self.bd = BlueDot()
-        self.bd.when_pressed = move
+        self.bd.when_pressed = self.move
         #self.bd.when_realease = stop
         #self.bd.when_moved = 
 
