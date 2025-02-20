@@ -10,7 +10,6 @@ class Controller:
         self.bd.when_pressed = self.move
         #Parametri default per il movimento
         self.speed = 1.0
-        self.duration = 1.0
         #Soglia per decidere la direzione
         self.dead_zone = 0.2
         #self.bd.when_realease = stop
@@ -19,16 +18,16 @@ class Controller:
 
     def move(self, pos):
         if pos.y > self.dead_zone:
-            self.bot.forward(self.speed, self.duration)
+            self.bot.forward(self.speed)
         elif pos.y < -self.dead_zone:
-            self.bot.backward(self.speed, self.duration)
+            self.bot.backward(self.speed)
         else:
             self.bot.stop()
 
         if pos.x > self.dead_zone:
-            self.bot.right(self.speed, self.duration)
-        elif pos.yx < -self.dead_zone:
-            self.bot.left(self.speed, self.duration)
+            self.bot.right(self.speed)
+        elif pos.x < -self.dead_zone:
+            self.bot.left(self.speed)
         else:
             self.bot.stop()
 
