@@ -1,4 +1,4 @@
-from bluedot import Bluedot
+from bluedot import BlueDot
 
 class Controller:
 
