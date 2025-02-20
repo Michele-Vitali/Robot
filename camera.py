@@ -1,4 +1,4 @@
-from picamera2 import PiCamera2
+from picamera2 import Picamera2, Preview
 from time import sleep
 import cv2
 
@@ -6,11 +6,12 @@ class Camera:
 
     def __init__(self):
         #Inizializzo la camera
-        self.camera = PiCamera2()
+        self.camera = Picamera2()
         #Setto alcune impostazioni
-        self.camera.preview_Resolution.main.size = (640, 480)
-        self.camera.preview_configuration.main.format = "RGB888"
-        self.camera.configure("preview")
+        #In particolare setto la preview ad un formato a 24-bit ordinato in B-G-R
+        camera_config = self.camera.create_preview_configuration(lores={'format': 'RGB888'})
+        self.camera.configure(camera_config)
+        self.camera.start_preview(Preview.QTGL)
         self.camera.start()
         #Faccio caricare la camera
         print("Camera caricata!")
