@@ -27,7 +27,7 @@ class Camera:
             # - org, posizione dell'angolo in basso a sinistra della stringa sulla foto
             cv2.putText(frame, "Ciao salamone", (100, 100), self.font, 2, (255, 0, 0), 3)
             #Analizzo l'immagine
-            self.analyze(frame)
+            frame = self.analyze(frame)
             #Mostro l'immagine: Nome_finestra, Immagine
             cv2.imshow("Frame", frame)
             #Controllo che non si voglia chiudere la finestra, 0xFF è una maschera
