@@ -7,6 +7,7 @@ class Robot:
     def __init__(self, left, right):
         self.bot = rb(left, right)
         self.camera = Camera()
+        print("Caricato tutto tranne Controller")
         self.controller = Controller()
         print("Tutto caricato!")
 
