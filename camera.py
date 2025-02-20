@@ -1,7 +1,7 @@
 from picamzero import Camera
 from time import sleep
 
-class Camera:
+class Cam:
 
     def __init__(self):
         self.cam = Camera()

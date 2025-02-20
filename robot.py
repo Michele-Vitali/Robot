@@ -1,13 +1,12 @@
 from gpiozero import Robot as rb
 from time import sleep
-from camera import Camera
+from camera import Cam
 from controller import Controller
 
 class Robot:
     def __init__(self, left, right):
         self.bot = rb(left, right)
-        self.camera = Camera()
-        print("Caricato tutto tranne Controller")
+        self.camera = Cam()
         self.controller = Controller()
         print("Tutto caricato!")
 
