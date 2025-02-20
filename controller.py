@@ -8,7 +8,7 @@ class Controller:
         #self.bd.when_realease = stop
         #self.bd.when_moved = 
 
-    def move(pos):
+    def move(self, pos):
         print(pos.x)
         print(pos.y)
 
