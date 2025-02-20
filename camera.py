@@ -1,5 +1,5 @@
-from picamera.array import PiRGBArray
-from picamera import PiCamera
+from picamera2.array import PiRGBArray
+from picamera2 import PiCamera
 from time import sleep
 import cv2
 
@@ -15,7 +15,8 @@ class Camera:
         print("Camera caricata!")
 
     def capture(self):
-         #Creo un array tridimensionale R-G-B
+        #Mostro la preview (per testare)
+        #Creo un array tridimensionale R-G-B
         self.videoraw = PiRGBArray(self.camera, size=(self.camera.resolution))
         #Catturo immagini di continuo dalla camera
         #I parametri sono:
