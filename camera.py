@@ -9,7 +9,7 @@ class Camera:
         self.camera = Picamera2()
         #Setto alcune impostazioni
         #In particolare setto la preview ad un formato a 24-bit ordinato in B-G-R
-        camera_config = self.camera.create_preview_configuration(lores={'format': 'RGB888'})
+        camera_config = self.camera.create_preview_configuration(lores={'format': 'BGR888'})
         #self.camera.configure(camera_config)
         #self.camera.start_preview(Preview.QTGL)
         self.camera.start()
