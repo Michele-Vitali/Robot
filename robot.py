@@ -1,13 +1,14 @@
 from gpiozero import Robot as rb
 from time import sleep
-from camera import Cam
+from camera import Camera
 from controller import Controller
 
 class Robot:
     def __init__(self, left, right):
         self.bot = rb(left, right)
-        self.camera = Cam()
+        self.camera = Camera()
         self.controller = Controller(self.bot)
+        self.inizializza()
         print("Tutto caricato!")
 
     def botRun(self):
@@ -23,3 +24,6 @@ class Robot:
             print("Try block!")
         except KeyboardInterrupt:
             print("Esecuzione terminata!")
+
+    def inizializza(self):
+        self.camera.capture()
