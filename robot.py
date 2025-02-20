@@ -7,31 +7,9 @@ class Robot:
     def __init__(self, left, right):
         self.bot = rb(left, right)
         self.camera = Camera()
-        self.controller = Controller()
+        self.controller = Controller(self.bot)
+        self.inizializza()
         print("Tutto caricato!")
-
-    def botForward(self, speed=1.0, duration=1.0):
-        self.bot.forward(speed)
-        sleep(duration)
-        self.bot.stop()
-
-    def botBackward(self, speed=1.0, duration=1.0):
-        self.bot.backward(speed)
-        sleep(duration)
-        self.bot.stop()
-
-    def botRight(self, speed=1.0, duration=1.0):
-        self.bot.right(speed)
-        sleep(duration)
-        self.bot.stop()
-
-    def botLeft(self, speed=1.0, duration=1.0):
-        self.bot.left(speed)
-        sleep(duration)
-        self.bot.stop()
-
-    def botStop(self):
-        self.bot.stop()
 
     def botRun(self):
         try:
@@ -46,3 +24,6 @@ class Robot:
             print("Try block!")
         except KeyboardInterrupt:
             print("Esecuzione terminata!")
+
+    def inizializza(self):
+        self.camera.capture()
