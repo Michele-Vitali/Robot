@@ -26,21 +26,40 @@ class Controller:
         else:
             if abs(pos.x) > abs(pos.y):
                 if pos.x > 0:
-                    self.bot.right(self.speed)
                     print("Destra")
+                    self.botRight()
                 else:
-                    self.bot.left(self.speed)
+                    self.botLeft()
                     print("Sinistra")
             else:
                 if pos.y > 0:
-                    self.bot.forward(self.speed)
+                    self.botForward()
                     print("Avanti")
                 else:
-                    self.bot.backward(self.speed)
+                    self.botBackward()
                     print("Indietro")
         print(pos.x)
         print(pos.y)
-        sleep(self.duration)
 
-    '''def stop():
-        pass'''
+    def botForward(self, speed=1.0, duration=1.0):
+        self.bot.forward(speed)
+        sleep(duration)
+        self.bot.stop()
+
+    def botBackward(self, speed=1.0, duration=1.0):
+        self.bot.backward(speed)
+        sleep(duration)
+        self.bot.stop()
+
+    def botRight(self, speed=1.0, duration=1.0):
+        self.bot.right(speed)
+        sleep(duration)
+        self.bot.stop()
+
+    def botLeft(self, speed=1.0, duration=1.0):
+        self.bot.left(speed)
+        sleep(duration)
+        self.bot.stop()
+
+    def botStop(self):
+        self.bot.stop()

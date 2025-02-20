@@ -10,29 +10,6 @@ class Robot:
         self.controller = Controller(self.bot)
         print("Tutto caricato!")
 
-    def botForward(self, speed=1.0, duration=1.0):
-        self.bot.forward(speed)
-        sleep(duration)
-        self.bot.stop()
-
-    def botBackward(self, speed=1.0, duration=1.0):
-        self.bot.backward(speed)
-        sleep(duration)
-        self.bot.stop()
-
-    def botRight(self, speed=1.0, duration=1.0):
-        self.bot.right(speed)
-        sleep(duration)
-        self.bot.stop()
-
-    def botLeft(self, speed=1.0, duration=1.0):
-        self.bot.left(speed)
-        sleep(duration)
-        self.bot.stop()
-
-    def botStop(self):
-        self.bot.stop()
-
     def botRun(self):
         try:
             '''self.botForward(duration=2.0)
