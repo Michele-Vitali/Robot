@@ -9,7 +9,7 @@ class Camera:
         self.camera = Picamera2()
         #Setto alcune impostazioni
         #In particolare setto la preview ad un formato a 24-bit ordinato in B-G-R
-        camera_config = self.camera.create_preview_configuration(lores={'format': 'RGB888'})
+        camera_config = self.camera.create_preview_configuration(lores={'format': 'BGR888'})
         #self.camera.configure(camera_config)
         #self.camera.start_preview(Preview.QTGL)
         self.camera.start()
@@ -21,11 +21,13 @@ class Camera:
     def capture(self):
         #Catturo immagini di continuo dalla camera
            while True: 
-            #Acquisisco il frame come un array numpy
+            #Acquisisco il frame come un array Numpy
             frame = self.camera.capture_array()
             #Metto il testo sul frame, alcuni parametri:
             # - org, posizione dell'angolo in basso a sinistra della stringa sulla foto
             cv2.putText(frame, "Ciao salamone", (100, 100), self.font, 2, (255, 0, 0), 3)
+            #Analizzo l'immagine
+            frame = self.analyze(frame)
             #Mostro l'immagine: Nome_finestra, Immagine
             cv2.imshow("Frame", frame)
             #Controllo che non si voglia chiudere la finestra, 0xFF è una maschera
@@ -33,3 +35,7 @@ class Camera:
             if cv2.waitKey(1) & 0xFF == ord("q"):
                 break
 
+    def analyze(self, image):
+        #Metto l'immagine in scala di grigi così da diminuire i disturbi
+        gr_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+        return gr_image
