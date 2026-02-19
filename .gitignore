@@ -1,0 +1,42 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+.env/
+.venv/
+env/
+
+# Environment variables
+.env
+.env.*
+
+# Logs
+logs/
+*.log
+
+# Test outputs
+calibration/
+test_outputs/
+
+# Media files (camera / OpenCV)
+*.png
+*.jpg
+*.jpeg
+*.avi
+*.mp4
+
+# Databases
+*.db
+
+# IDE / Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
